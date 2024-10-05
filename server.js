@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import express from "express";
 import connect from "./Src/config.js/mongoConfig.js";
 import Questionroutes from "./Src/Features/questions.routes.js";

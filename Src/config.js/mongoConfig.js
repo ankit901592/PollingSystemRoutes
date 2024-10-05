@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
-const Port='mongodb://localhost:27017/pollingQuestion';
-const  connect=async()=>{
-   await mongoose.connect(Port);
-   console.log('mongo is connected');
-   
-}
+const connect = async () => {
+  mongoose.connect(process.env.MONGO_URI, {
+    ssl: true,
+    tlsInsecure: false,
+  }).then(() => {
+    console.log("Connected to MongoDB with TLS");
+  }).catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  })
+};
 
-export  default connect;
+export default connect;
